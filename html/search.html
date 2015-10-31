@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<title>Wahei</title>
+<link rel="stylesheet" href="../css/search.css">
+<link rel='icon' href='../images/favicon.png' type='image/png'>
+<style>
+	.zero {
+		background-image: url("{{.BackgroundImage}}");
+		//background-image: url("../images/default.jpg");
+	}
+</style>
+</head>
+<body>
+<div class="zero">
+<div class="one">
+	<div class="search">
+		<form id="search-form" method="GET" action="search">
+			<div class="text-box">
+				<input type="text" value="{{.W.Word}}" size="25" name="word" id="search-box">
+			</div>
+			<div class="search-btn">
+				<button type="submit" name="search-btn" id="search-btn">Search</button>
+			</div>
+		</form>
+	</div>
+	<div class="result">
+		{{range .W.Meanings}}
+		<div class="a-meaning">
+			<div class="l2-meaning">{{.L2}}</div>
+			<div class="l1-meaning">{{.L1}}</div>
+			<br>
+		</div>
+		{{end}}
+	</div>
+	<div class="messages">
+		<div>
+			<div class="msg">{{.Msg}}</div>
+		</div>
+	</div>
+	<div class="footer">
+		<label>wahanthok is powered with <a href="http://golang.org">golang</a> by mubitosh</label>
+	</div>
+</div>
+</div>
+</body>
+</html>
