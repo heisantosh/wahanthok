@@ -3,6 +3,7 @@ package wahanthok
 import (
 	"log"
 	"errors"
+	"strings"
 	"net/http"
 	"html/template"
 )
@@ -33,17 +34,11 @@ func search(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	log.Println("Search for word:", word)
-	if v, ok := db[word]; ok {
+	if v, ok := db[strings.ToLower(word)]; ok { // The key is all in lower case
 		p.W = v
+		p.W.Word = word // Display the word in the same cases as user entered
 		p.Msg = ""
 		log.Println("Found meaning:", v)
-		// Set matching background only if searched for cat or dog
-		if word == "cat" || word == "dog" {
-			imgUrl := GetAnImageURL(word)
-			if imgUrl != "" {
-				p.BackgroundImage = imgUrl
-			}
-		}
 	} else {
 		p.W = Wa{word, nil}
 		p.Msg = "Atoppa wahei ama thibiyo!"
