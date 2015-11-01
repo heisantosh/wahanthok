@@ -41,7 +41,7 @@ func search(w http.ResponseWriter, r *http.Request) {
 		log.Println("Found meaning:", v)
 	} else {
 		p.W = Wa{word, nil}
-		p.Msg = "Atoppa wahei ama thibiyo!"
+		p.Msg = "Atoppa wahei ama thibiyo! Please search another word."
 		log.Println("Not found")
 	}
 	// Redirect to /
