@@ -48,7 +48,6 @@ func search(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-//func main() {
 func init() {
 	var err error
 	var d *Was
